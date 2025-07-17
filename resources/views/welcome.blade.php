@@ -62,7 +62,7 @@
     <div class="video-hero">
         <div class="video-container">
             <video autoplay muted loop id="bg-video">
-                <source src="{{ asset('videos/video_home.mp4') }}" type="video/mp4">
+                <source src="{{ asset('videos/video_home2.mp4') }}" type="video/mp4">
             </video>
         </div>
 
