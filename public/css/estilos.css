@@ -1,0 +1,481 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+    background: transparent;
+}
+
+body,
+html {
+    height: 100%;
+    font-family: 'Raleway', sans-serif;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* Barra superior FIJADA */
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 40px;
+    background-color: rgba(0, 0, 0, 0.55);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.social-icons a {
+    color: white;
+    font-size: 2.0rem;
+    margin-right: 15px;
+    transition: transform 0.3s;
+}
+
+.branding {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.brand-logo {
+
+    height: 50px;
+    width: auto;
+}
+
+.brand-text {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    white-space: nowrap;
+}
+
+/* Sección de video (ocupa 100vh fijo) */
+.video-hero {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+}
+
+.video-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.video-container video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    filter: brightness(0.5);
+}
+
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 15%;
+    transform: translateY(-50%);
+    max-width: 600px;
+}
+
+.main-slogan {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.main-origin {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    font-style: italic;
+}
+
+/* Sección de contenido (empieza después del viewport) */
+.content-wrapper {
+    position: relative;
+    top: 100vh;
+    background-color: rgb(248, 248, 248);
+    color: #333;
+}
+
+.content-section {
+    padding: 80px 40px;
+}
+
+/* Estilos del menú */
+.menu-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2.0rem;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    border-radius: 4px;
+    padding: 1rem;
+    display: none;
+    min-width: 180px;
+}
+
+.dropdown-menu.show {
+    display: block;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.dropdown-menu a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 0.5rem 1rem;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    background: #54cff7;
+    border-radius: 20px;
+    box-shadow: 10px 10px 15px #ddd;
+    padding: 1.5rem;
+    margin: 3rem auto;
+    width: 95%;
+    max-width: 920px;
+}
+
+
+.card img {
+    width: 121px;
+    height: 134px;
+    object-fit: cover;
+    border-radius: 20px;
+    margin-right: 1.5rem;
+}
+
+.card-content {
+    flex: 1;
+}
+
+.card-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    color: #00538a;
+
+}
+
+.card-title i {
+    color: #ffffff;
+    margin-right: 0.5rem;
+}
+
+.card-subtitle {
+    color: #00538a;
+    margin-bottom: 1rem;
+}
+
+.alert {
+    background-color: #d4f4d1;
+    padding: 0.7rem 1rem;
+    border-radius: 12px;
+    color: #206b2d;
+    font-weight: 500;
+    display: inline-block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .top-bar {
+        padding: 10px 20px;
+    }
+
+    .hero-content {
+        left: 10%;
+        padding-right: 10%;
+    }
+
+    .main-slogan {
+        font-size: 2.5rem;
+    }
+
+    .main-origin {
+        font-size: 1.2rem;
+    }
+}
+
+@keyframes fadeDark {
+    from {
+        background-color: rgb(248, 248, 248);
+        color: #333;
+    }
+
+    to {
+        background-color: #121212;
+        color: #eee;
+    }
+}
+
+/* Modo oscuro para la sección */
+.content-wrapper.dark-mode {
+    animation: fadeDark 0.5s ease forwards;
+    background-color: #121212;
+    color: #eee;
+}
+
+.content-wrapper.dark-mode .card {
+    background-color: #1e1e1e;
+    color: #eee;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.content-wrapper.dark-mode .card-subtitle {
+    color: #eee;
+
+}
+
+
+.content-wrapper.dark-mode .card-title{
+    color: #eee;
+
+}
+.content-wrapper.dark-mode .card-title i {
+    color: #ffffff;
+}
+
+.content-wrapper.dark-mode .alert {
+    background-color: #2a5729;
+    color: #aef3ae;
+}
+
+/* Animación de rotación y transición */
+#toggleDarkMode .icon {
+    display: inline-block;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+/* Clase para cuando esté activado */
+#toggleDarkMode.active .icon {
+    transform: rotate(360deg);
+}
+
+/* Sección "¿Qué es Pitayas y Pitahayas Huitziltepec?" */
+.section-identidad {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.section-identidad h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.section-identidad p {
+    max-width: 700px;
+    margin: 0 auto 1rem;
+    font-size: 1rem;
+}
+
+.btn-saber-mas {
+    display: inline-block;
+    background-color: #151528;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.btn-saber-mas:hover {
+    background-color: #000;
+}
+
+/* Carrusel automático */
+.galeria-section {
+    padding: 40px 20px;
+    text-align: center;
+
+}
+
+.carrusel {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.carrusel-pista {
+    display: flex;
+    transition: transform 0.6s ease-in-out;
+    width: 100%;
+}
+
+.carrusel-pista img {
+    flex-shrink: 0;
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .carrusel-pista img {
+        height: 250px;
+    }
+}
+
+.indicadores {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    gap: 10px;
+}
+
+.indicador {
+    width: 12px;
+    height: 12px;
+    background-color: #a8dda8;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.indicador.activo {
+    background-color: #267326;
+}
+
+/* tipos de pitayas */
+.section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 10%;
+    border-bottom: 1px solid #e0e0e0;
+
+}
+
+.section:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.text {
+    flex: 1 1 400px;
+    max-width: 500px;
+}
+
+.text h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.text p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.image {
+    flex: 1 1 300px;
+    text-align: center;
+}
+
+.image img {
+    max-width: 100%;
+    height: auto;
+      -webkit-mask-image: linear-gradient(to right, transparent, black 20%),
+                      linear-gradient(to top, transparent, black 20%);
+  -webkit-mask-composite: destination-in;
+  mask-image: linear-gradient(to right, transparent, black 20%),
+              linear-gradient(to top, transparent, black 20%);
+  mask-composite: intersect;
+}
+
+/* Footer */
+.footer {
+    background-color: rgb(64, 64, 64);
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.footer-logo img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.footer-text {
+    margin: 5px 0;
+    font-size: 1rem;
+}
+
+.footer-subtext {
+    margin: 5px 0;
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+.footer-divider {
+    border: 0;
+    height: 1px;
+    background: #444;
+    margin: 20px auto;
+    width: 60%;
+}
+
+.footer-icons {
+    margin-top: 10px;
+}
+
+.footer-icon {
+    color: white;
+    margin: 0 15px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-icon:hover {
+    color: #ff5e5e;
+}
